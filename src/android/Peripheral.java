@@ -386,6 +386,12 @@ public class Peripheral extends BluetoothGattCallback {
 
                 // Why doesn't setCharacteristicNotification write the descriptor?
                 //BluetoothGattDescriptor descriptor = characteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_UUID);
+                StringBuilder sb = new StringBuilder();
+                for (BluetoothGattDescriptor descriptor:characteristic.getDescriptors()){
+                    sb.append(descriptor.getUuid().toString()).append("\n");
+                    callbackContext.error(sb.toString());
+                }
+
                 UUID uuid = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
                 BluetoothGattDescriptor descriptor = characteristic.getDescriptor(uuid);
                 if (descriptor != null) {
