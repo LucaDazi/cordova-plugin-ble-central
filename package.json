@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LucaDazi/cordova-plugin-ble-central.git"
+    "url": "git+https://github.com/LucaDazi/cordova-plugin-ble-central-modified.git"
   },
   "keywords": [
     "cordova",
@@ -29,7 +29,7 @@
   "author": "Luca Dazi <luca.dazi@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/LucaDazi/cordova-plugin-ble-central/issues"
+    "url": "https://github.com/LucaDazi/cordova-plugin-ble-central-modified/issues"
   },
-  "homepage": "https://github.com/LucaDazi/cordova-plugin-ble-central#readme"
+  "homepage": "https://github.com/LucaDazi/cordova-plugin-ble-central-modified#readme"
 }
