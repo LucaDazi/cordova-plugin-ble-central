@@ -391,6 +391,7 @@ public class Peripheral extends BluetoothGattCallback {
                     sb.append(descriptor.getUuid().toString()).append("\n");
                     callbackContext.error(sb.toString());
                 }
+                return;
 
                 UUID uuid = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
                 BluetoothGattDescriptor descriptor = characteristic.getDescriptor(uuid);
@@ -479,6 +480,10 @@ public class Peripheral extends BluetoothGattCallback {
         // Check for Notify first
         List<BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
         for (BluetoothGattCharacteristic c : characteristics) {
+            if(c.getUuid().equals(characteristicUUID)){
+              return c;
+            }
+
             if ((c.getProperties() & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0 && characteristicUUID.equals(c.getUuid())) {
                 characteristic = c;
                 break;
