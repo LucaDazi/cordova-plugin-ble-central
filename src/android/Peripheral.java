@@ -391,20 +391,13 @@ public class Peripheral extends BluetoothGattCallback {
                     sb.append(descriptor.getUuid().toString()).append("\n");
                     callbackContext.error(sb.toString());
                 }
-                return;
 
+                /*
                 UUID uuid = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
                 BluetoothGattDescriptor descriptor = characteristic.getDescriptor(uuid);
                 if (descriptor != null) {
 
-                    descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                    if (gatt.writeDescriptor(descriptor)) {
-                        success = true;
-                    } else {
-                        callbackContext.error("Failed to set client characteristic notification for " + characteristicUUID);
-                    }
                     // prefer notify over indicate
-                    /*
                     if ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0) {
                         descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
                     } else if ((characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0) {
@@ -418,11 +411,10 @@ public class Peripheral extends BluetoothGattCallback {
                     } else {
                         callbackContext.error("Failed to set client characteristic notification for " + characteristicUUID);
                     }
-                    */
                 } else {
                     callbackContext.error("Set notification failed for " + characteristicUUID);
                 }
-
+                */
             } else {
                 callbackContext.error("Failed to register notification for " + characteristicUUID);
             }
