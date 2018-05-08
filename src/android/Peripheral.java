@@ -300,7 +300,7 @@ public class Peripheral extends BluetoothGattCallback {
                 } else {
                     readCallback.error("Error reading " + characteristic.getUuid() + " status=" + status);
                 }
-    
+
                 readCallback = null;
             }
         }
@@ -320,7 +320,7 @@ public class Peripheral extends BluetoothGattCallback {
                 } else {
                     writeCallback.error(status);
                 }
-    
+
                 writeCallback = null;
             }
         }
@@ -347,7 +347,7 @@ public class Peripheral extends BluetoothGattCallback {
                 } else {
                     readCallback.error("Error reading RSSI status=" + status);
                 }
-    
+
                 readCallback = null;
             }
         }
@@ -385,7 +385,8 @@ public class Peripheral extends BluetoothGattCallback {
             if (gatt.setCharacteristicNotification(characteristic, true)) {
 
                 // Why doesn't setCharacteristicNotification write the descriptor?
-                BluetoothGattDescriptor descriptor = characteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_UUID);
+                //BluetoothGattDescriptor descriptor = characteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_UUID);
+                BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(UUIDHelper.uuidFromString("0004"), BluetoothGattDescriptor.PERMISSION_WRITE);
                 if (descriptor != null) {
 
                     // prefer notify over indicate
@@ -537,7 +538,7 @@ public class Peripheral extends BluetoothGattCallback {
 
         synchronized(this) {
             readCallback = callbackContext;
-    
+
             if (gatt.readRemoteRssi()) {
                 success = true;
             } else {
@@ -600,7 +601,7 @@ public class Peripheral extends BluetoothGattCallback {
             characteristic.setWriteType(writeType);
             synchronized(this) {
                 writeCallback = callbackContext;
-    
+
                 if (gatt.writeCharacteristic(characteristic)) {
                     success = true;
                 } else {
